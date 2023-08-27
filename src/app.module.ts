@@ -2,7 +2,7 @@ import { ApolloDriver } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { GqlModuleOptions, GraphQLModule } from '@nestjs/graphql';
-import { Ahhh } from './aprendendo-graphql/app.module';
+import { UsersModule } from './aprendendo-graphql/app.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -26,7 +26,7 @@ import { Ahhh } from './aprendendo-graphql/app.module';
         };
       },
     }),
-    Ahhh,
+    UsersModule,
   ],
 })
 export class AppModule {}

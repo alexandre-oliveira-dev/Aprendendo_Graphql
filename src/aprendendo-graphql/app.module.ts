@@ -7,4 +7,4 @@ import { AppService } from './app.service';
   providers: [AppController, AppService],
   exports: [],
 })
-export class Ahhh {}
+export class UsersModule {}

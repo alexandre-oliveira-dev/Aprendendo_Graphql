@@ -20,8 +20,8 @@ generator nestgraphql {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL_WITH_SCHEMA")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Users {

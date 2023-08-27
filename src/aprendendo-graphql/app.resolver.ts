@@ -1,13 +1,22 @@
 import { AppService } from './app.service';
-import { Resolver, Query } from '@nestjs/graphql';
-import { HelloType } from './dto/app.output';
+import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
+import {
+  CreateOneUsersArgs,
+  FindManyUsersArgs,
+  Users,
+} from 'src/prisma/@generated';
 
-@Resolver(() => HelloType)
+@Resolver(() => Users)
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Query(() => HelloType, { name: 'teste' })
-  getHello() {
-    return HelloType;
+  @Query(() => Users, { name: 'teste' })
+  getHello(@Args() args: FindManyUsersArgs) {
+    return this.appService.getUsers(args);
+  }
+
+  @Mutation(() => Users, { name: 'create' })
+  createUser(@Args() args: CreateOneUsersArgs) {
+    return this.appService.createUsers(args);
   }
 }
