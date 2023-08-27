@@ -1,0 +1,31 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["views", "filteredRelationCount"]
+}
+
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("DATABASE_URL_WITH_SCHEMA")
+// }
+
+generator nestgraphql {
+  provider                      = "node node_modules/prisma-nestjs-graphql"
+  output                        = "../src/prisma/@generated"
+  reExport                      = "All"
+  fields_Scalars_from           = "graphql-scalars"
+  fields_Scalars_input          = true
+  fields_Scalars_output         = true
+  graphqlScalars_Json_name      = "GraphQLJSON"
+  graphqlScalars_Json_specifier = "graphql-scalars"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL_WITH_SCHEMA")
+}
+
+model Users {
+  id   String @id @default(uuid())
+  name String
+  age  Int
+}
